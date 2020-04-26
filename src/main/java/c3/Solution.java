@@ -10,11 +10,12 @@ public class Solution {
             return 0;
         }
         int maxLen = 1;
+        List<Integer> sub = new ArrayList<Integer>();
         for (int i = 0; i < s.length() - 1; i++) {
             for (int j = i + 1; j < s.length(); j++) {
                 int a = i;
                 int b = j;
-                List<Integer> sub = new ArrayList<Integer>();
+                sub.clear();
                 for (int k = a; k <= b; k++) {
                     if (!sub.contains((int) s.charAt(k))) {
                         sub.add((int) s.charAt(k));
