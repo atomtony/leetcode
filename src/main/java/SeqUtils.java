@@ -49,12 +49,12 @@ public class SeqUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(seqJoin("aa", "bb", "cc"));
-        System.out.println(seqJoin2("aa", "bb", "cc"));
-        System.out.println(seqJoin3("aa", "bb", "cc"));
-        System.out.println(seqJoin4("aa", "bb", "cc"));
-        System.out.println(seqJoin5("aa", "bb", "cc"));
-        System.out.println(seqJoin5(1, 2, "aa"));
+        System.out.println(seqJoin("aa", "阿斯顿发生", "cc"));
+        System.out.println(seqJoin2("aa", "阿斯顿发生", "cc"));
+        System.out.println(seqJoin3("aa", "阿斯顿发生", "cc"));
+        System.out.println(seqJoin4("aa", "阿斯顿发生", "cc"));
+        System.out.println(seqJoin5("aa", "阿斯顿发生", "cc"));
+        System.out.println(seqJoin5(1, "阿斯顿发生", "aa"));
         {
             long start = System.currentTimeMillis();
             for (int i = 0; i < 100000000; i++) {
