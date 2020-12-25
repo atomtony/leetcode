@@ -1,4 +1,4 @@
-package c7;
+package c0_100.c7;
 
 class Solution {
     public int reverse(int x) {

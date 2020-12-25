@@ -1,4 +1,4 @@
-package c1;
+package c0_100.c1;
 
 public class Solution {
 
