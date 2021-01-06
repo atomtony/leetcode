@@ -83,6 +83,20 @@ public class Ch28_Heap {
             }
         }
 
+        // 堆排序
+        public static void sort(int[] a, int n) {
+            buildHeap(a, n);
+            int k = n;
+            while (k > 1) {
+                // 每次交换，把最大的放置最后
+                swap(a, 1, k);
+                // 个数减少1
+                --k;
+                // 然后剩下的再次堆化，下标为1的又是最大的。
+                heapify(a, k, 1);
+            }
+        }
+
         public static void print(int a[], int count) {
             int[] b = new int[count];
             System.arraycopy(a, 1, b, 0, count);
@@ -162,6 +176,21 @@ public class Ch28_Heap {
             Heap.print(a, 9);
             Heap.buildHeap(a, 9);
             Heap.print(a, 9);
+        }
+
+        // 堆排序
+        {
+            System.out.println("堆排序");
+            int[] a = new int[6];
+            a[1] = 9;
+            a[2] = 6;
+            a[3] = 3;
+            a[4] = 1;
+            a[5] = 5;
+
+            Heap.print(a, 5);
+            Heap.sort(a, 5);
+            Heap.print(a, 5);
         }
     }
 }
