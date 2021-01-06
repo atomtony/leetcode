@@ -21,6 +21,7 @@ public class Ch31_Graph {
             adj[t].add(s);
         }
 
+        // 广度优先搜索
         public void bfs(int s, int t) {
 
             if (s == t) {
@@ -74,26 +75,86 @@ public class Ch31_Graph {
             System.out.print(t + " ");
         }
 
+        // 深度优先搜索
+        boolean found = false;
+
+        public void dfs(int s, int t) {
+            found = false;
+            // 记录顶点被访问标记
+            boolean[] visited = new boolean[v];
+            // 记录前驱顶点
+            int[] prev = new int[v];
+            for (int i = 0; i < v; i++) {
+                prev[i] = -1;
+            }
+            recurDfs(s, t, visited, prev);
+            print(prev, s, t);
+        }
+
+        private void recurDfs(int w, int t, boolean[] visited, int[] prev) {
+            if (found == true) {
+                return;
+            }
+            visited[w] = true;
+            // 到达终点
+            if (w == t) {
+                found = true;
+                return;
+            }
+
+            for (int i = 0; i < adj[w].size(); i++) {
+                // q 另外一顶点
+                int q = adj[w].get(i);
+                if (!visited[q]) {
+                    // q顶点被w顶点访问
+                    prev[q] = w;
+                    recurDfs(q, t, visited, prev);
+                }
+            }
+        }
+
+
     }
 
     public static void main(String[] args) {
+        {
 
-        Graph graph = new Graph(8);
-        graph.addEdge(0, 1);
-        graph.addEdge(0, 3);
+            Graph graph = new Graph(8);
+            graph.addEdge(0, 1);
+            graph.addEdge(0, 3);
 
-        graph.addEdge(1, 2);
-        graph.addEdge(1, 4);
-        graph.addEdge(3, 4);
+            graph.addEdge(1, 2);
+            graph.addEdge(1, 4);
+            graph.addEdge(3, 4);
 
-        graph.addEdge(2, 5);
-        graph.addEdge(4, 5);
-        graph.addEdge(4, 6);
+            graph.addEdge(2, 5);
+            graph.addEdge(4, 5);
+            graph.addEdge(4, 6);
 
-        graph.addEdge(6, 7);
-        graph.addEdge(5, 7);
+            graph.addEdge(6, 7);
+            graph.addEdge(5, 7);
 
-        graph.bfs(0,7);
+            graph.bfs(0, 7);
+        }
+        System.out.println();
+        {
+
+            Graph graph = new Graph(8);
+            graph.addEdge(0, 1);
+            graph.addEdge(0, 3);
+
+            graph.addEdge(1, 2);
+            graph.addEdge(1, 4);
+            graph.addEdge(3, 4);
+
+            graph.addEdge(2, 5);
+            graph.addEdge(4, 5);
+            graph.addEdge(4, 6);
+
+            graph.addEdge(6, 7);
+            graph.addEdge(5, 7);
+            graph.bfs(0, 6);
+        }
 
     }
 
