@@ -127,7 +127,7 @@ public class Ch37 {
         System.out.println("totalHufBitsCount:"+totalHufBitsCount);
         System.out.println("霍夫曼编码编码后的二进制位数：" + bitStr.toString().length());
 
-        //剩下的就是二进制转16进制，写入文件
+        //剩下的就是bit转byte，写入文件
 
 
     }
