@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-
 public class Ch06_SinglyLinkedList {
 
     static class Node {
@@ -9,14 +7,14 @@ public class Ch06_SinglyLinkedList {
 
     static class SinglyLinkedList {
 
-        Node root;
+        Node head;
 
         public void add(int value) {
-            if (root == null) {
-                root = new Node();
-                root.data = value;
+            if (head == null) {
+                head = new Node();
+                head.data = value;
             } else {
-                Node parent = root;
+                Node parent = head;
                 while (parent.next != null) {
                     parent = parent.next;
                 }
@@ -28,7 +26,7 @@ public class Ch06_SinglyLinkedList {
 
         public void add(int index, int value) {
             // 链表为空
-            if (root == null) {
+            if (head == null) {
                 return;
             }
 
@@ -37,13 +35,13 @@ public class Ch06_SinglyLinkedList {
                 Node newNode = new Node();
                 newNode.data = value;
 
-                newNode.next = root;
-                root = newNode;
+                newNode.next = head;
+                head = newNode;
                 return;
             }
 
-            Node parent = root;
-            Node current = root;
+            Node parent = head;
+            Node current = head;
             int position = 0;
 
             if (0 != index) {
@@ -74,12 +72,12 @@ public class Ch06_SinglyLinkedList {
         public void remove(int value) {
 
             // 链表为空
-            if (root == null) {
+            if (head == null) {
                 return;
             }
 
-            Node parent = root;
-            Node current = root;
+            Node parent = head;
+            Node current = head;
 
             while (current != null && current.data != value) {
                 parent = current;
@@ -92,8 +90,8 @@ public class Ch06_SinglyLinkedList {
             }
 
             // 删除头节点
-            if (current == root) {
-                root = root.next;
+            if (current == head) {
+                head = head.next;
                 return;
             }
 
@@ -103,7 +101,7 @@ public class Ch06_SinglyLinkedList {
         }
 
         public void printAll() {
-            Node p = root;
+            Node p = head;
             while (p != null) {
                 System.out.print("->" + p.data);
                 p = p.next;
