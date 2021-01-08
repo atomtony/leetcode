@@ -44,18 +44,15 @@ public class Ch06_SinglyLinkedList {
             Node current = head;
             int position = 0;
 
-            if (0 != index) {
-                while (current != null) {
-                    parent = current;
-                    current = current.next;
-                    position++;
+            while (current != null) {
+                parent = current;
+                current = current.next;
+                position++;
 
-                    if (position == index) {
-                        break;
-                    }
+                if (position == index) {
+                    break;
                 }
             }
-
 
             // 找到节点
             if (position == index) {

@@ -23,8 +23,8 @@ public class Ch06_DoublyLinkedList {
                 while (tail.next != null) {
                     tail = tail.next;
                 }
-                tail.next = newNode;
 
+                tail.next = newNode;
                 newNode.prev = tail;
             }
         }
@@ -40,35 +40,35 @@ public class Ch06_DoublyLinkedList {
                 Node newNode = new Node();
                 newNode.data = value;
 
+                head.prev = newNode;
                 newNode.next = head;
                 head = newNode;
                 return;
             }
 
-            Node parent = head;
+
             Node current = head;
             int position = 0;
 
-            if (0 != index) {
-                while (current != null) {
-                    parent = current;
-                    current = current.next;
-                    position++;
-
-                    if (position == index) {
-                        break;
-                    }
+            while (current != null) {
+                current = current.next;
+                position++;
+                if (position == index) {
+                    break;
                 }
             }
 
-
             // 找到节点
-            if (position == index) {
+            if (current != null) {
                 Node newNode = new Node();
                 newNode.data = value;
 
-                parent.next = newNode;
+
                 newNode.next = current;
+                current.prev.next = newNode;
+
+                newNode.prev = current.prev;
+                current.prev = newNode;
 
             }
 
@@ -148,6 +148,16 @@ public class Ch06_DoublyLinkedList {
 
         System.out.println("删除中间节点");
         doublyLinkedList.remove(3);
+        doublyLinkedList.printAll();
+
+        System.out.println("指定位置添加");
+        doublyLinkedList.add(0, 1);
+        doublyLinkedList.printAll();
+
+        doublyLinkedList.add(1, 3);
+        doublyLinkedList.printAll();
+
+        doublyLinkedList.add(3, 5);
         doublyLinkedList.printAll();
 
     }
