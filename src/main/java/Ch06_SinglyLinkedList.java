@@ -26,6 +26,51 @@ public class Ch06_SinglyLinkedList {
             }
         }
 
+        public void add(int index, int value) {
+            // 链表为空
+            if (root == null) {
+                return;
+            }
+
+            // 头节点位置
+            if (index == 0) {
+                Node newNode = new Node();
+                newNode.data = value;
+
+                newNode.next = root;
+                root = newNode;
+                return;
+            }
+
+            Node parent = root;
+            Node current = root;
+            int position = 0;
+
+            if (0 != index) {
+                while (current != null) {
+                    parent = current;
+                    current = current.next;
+                    position++;
+
+                    if (position == index) {
+                        break;
+                    }
+                }
+            }
+
+
+            // 找到节点
+            if (position == index) {
+                Node newNode = new Node();
+                newNode.data = value;
+
+                parent.next = newNode;
+                newNode.next = current;
+
+            }
+
+        }
+
         public void remove(int value) {
 
             // 链表为空
@@ -93,6 +138,13 @@ public class Ch06_SinglyLinkedList {
 
         System.out.println("删除中间节点");
         singlyLinkedList.remove(3);
+        singlyLinkedList.printAll();
+
+        System.out.println("指定位置添加");
+        singlyLinkedList.add(0, 1);
+        singlyLinkedList.printAll();
+
+        singlyLinkedList.add(2, 3);
         singlyLinkedList.printAll();
 
     }
