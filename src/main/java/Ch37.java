@@ -49,14 +49,15 @@ public class Ch37 {
 
     public static void main(String[] args) {
 
-        List<Char> list = new ArrayList<>(Arrays.asList(
-                new Char("a", 450, 450),
-                new Char("b", 350, 700),
-                new Char("c", 90, 270),
-                new Char("d", 60, 240),
-                new Char("e", 30, 150),
-                new Char("f", 20, 100)
-        )
+        List<Char> list = new ArrayList<>(
+                Arrays.asList(
+                        new Char("a", 450, 450),
+                        new Char("b", 350, 700),
+                        new Char("c", 90, 270),
+                        new Char("d", 60, 240),
+                        new Char("e", 30, 150),
+                        new Char("f", 20, 100)
+                )
         );
         List<Char> bak = new ArrayList<>();
 
@@ -124,7 +125,7 @@ public class Ch37 {
             bitStr.append(map.get(ch));
         }
 
-        System.out.println("totalHufBitsCount:"+totalHufBitsCount);
+        System.out.println("totalHufBitsCount:" + totalHufBitsCount);
         System.out.println("霍夫曼编码编码后的二进制位数：" + bitStr.toString().length());
 
         //剩下的就是bit转byte，写入文件
