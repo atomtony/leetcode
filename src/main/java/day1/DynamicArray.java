@@ -1,12 +1,14 @@
 package day1;
 
+import java.util.Arrays;
+
 public class DynamicArray {
 
     static class Array {
 
         private Object[] array;
         private int count;
-        private int size = 10;
+        private int size;
 
         public Array() {
             this.count = 0;
@@ -31,7 +33,6 @@ public class DynamicArray {
                 throw new RuntimeException("o must be not null!");
             }
 
-            int index = 0;
             for (int i = 0; i < count; i++) {
                 if (array[i].equals(o)) {
                     remove(i);
@@ -41,10 +42,30 @@ public class DynamicArray {
         }
 
         public void remove(int index) {
-            if (index >= count) {
-                throw new RuntimeException("index must less than " + count);
+
+            if (index < 0 || index >= count) {
+                throw new RuntimeException("index must more than zero and less than " + count);
             }
-            System.arraycopy(array,index,array,index+1,count-index);
+
+            // 最后一个
+            if (index == count - 1) {
+                count--;
+                array[index] = null;
+                return;
+            }
+
+            System.arraycopy(array, index+1, array, index , count - index - 1);
+            count--;
+        }
+
+        public void printAll() {
+            StringBuilder builder = new StringBuilder();
+            builder.append("[");
+            for (int i = 0; i < count; i++) {
+                builder.append(array[i]).append(",");
+            }
+            builder.append("]");
+            System.out.println(builder.toString());
         }
 
     }
@@ -52,10 +73,25 @@ public class DynamicArray {
     public static void main(String[] args) {
         Array array = new Array();
 
+        // 添加
         for (int i = 0; i < 11; i++) {
             array.add(i);
         }
+        array.printAll();
 
-        System.out.println(array);
+        // 删除第一个
+        array.remove((Object) 0);
+        array.printAll();
+
+
+        // 删除最后一个
+        array.remove((Object) 10);
+        array.printAll();
+
+        // 删除中间
+        array.remove((Object) 5);
+        array.remove((Object) 2);
+        array.printAll();
+
     }
 }
