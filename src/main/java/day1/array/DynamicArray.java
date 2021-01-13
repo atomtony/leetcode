@@ -1,7 +1,8 @@
-package day1;
+package day1.array;
 
-import java.util.Arrays;
-
+/**
+ * 实现一个支持动态扩容的数组
+ */
 public class DynamicArray {
 
     static class Array {
